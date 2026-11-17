@@ -18,32 +18,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onSelectNav }) => {
         className="fixed top-0 left-0 right-0 z-10 w-full px-5 sm:px-8 py-4 sm:py-5 flex flex-row justify-between items-center"
       >
         {/* Logo (left) */}
-        <div
-          className="flex flex-row items-center gap-3 cursor-pointer group"
+        <button
+          type="button"
+          className="flex flex-row items-center gap-3 cursor-pointer group shrink-0 bg-transparent border-0 p-0 focus-visible:outline-2 focus-visible:outline-white rounded-lg"
           onClick={() => handleNavClick('department')}
-          title="State University of Medical and Applied Sciences"
+          title="State University of Medical and Applied Sciences (SUMAS)"
+          aria-label="SUMAS — Department of Electrical and Electronic Engineering"
         >
-          <span
-            className="text-[21px] sm:text-[26px] tracking-tight text-white select-none leading-none font-semibold group-hover:opacity-80 transition-opacity"
-            style={{ fontFamily: 'var(--font-heading)' }}
-          >
-            SUMAS®
-          </span>
-          <span
-            className="text-[25px] sm:text-[30px] text-white select-none leading-none inline-block"
-            style={{ letterSpacing: '-0.02em' }}
-            aria-hidden="true"
-          >
-            ✳︎
-          </span>
-          <span className="hidden lg:inline-block text-xs uppercase tracking-widest text-white/60 pl-1 border-l border-white/20 select-none">
-            Electrical &amp; Electronic Engineering
-          </span>
-        </div>
+          <img
+            src="/sumas-logo.png"
+            alt="SUMAS — State University of Medical and Applied Sciences"
+            className="h-9 sm:h-11 w-auto object-contain block select-none drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)] group-hover:opacity-85 transition-opacity"
+          />
+        </button>
 
         {/* Desktop nav links (center, hidden below md) */}
         <nav
-          className="hidden md:flex flex-row items-center text-[21px] lg:text-[23px] text-white"
+          className="hidden md:flex flex-row items-center text-[16px] lg:text-[21px] text-white whitespace-nowrap"
           aria-label="Department Navigation"
         >
           <a
@@ -52,7 +43,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSelectNav }) => {
               e.preventDefault();
               handleNavClick('department');
             }}
-            className="hover:opacity-60 transition-opacity"
+            className="hover:opacity-60 transition-opacity whitespace-nowrap"
           >
             Department
           </a>
@@ -63,7 +54,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSelectNav }) => {
               e.preventDefault();
               handleNavClick('curriculum');
             }}
-            className="hover:opacity-60 transition-opacity"
+            className="hover:opacity-60 transition-opacity whitespace-nowrap"
           >
             5-Year Path
           </a>
@@ -74,7 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSelectNav }) => {
               e.preventDefault();
               handleNavClick('skills');
             }}
-            className="hover:opacity-60 transition-opacity"
+            className="hover:opacity-60 transition-opacity whitespace-nowrap"
           >
             Core Skills
           </a>
@@ -85,7 +76,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSelectNav }) => {
               e.preventDefault();
               handleNavClick('labs');
             }}
-            className="hover:opacity-60 transition-opacity"
+            className="hover:opacity-60 transition-opacity whitespace-nowrap"
           >
             Laboratories
           </a>
@@ -98,7 +89,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSelectNav }) => {
             e.preventDefault();
             handleNavClick('contact');
           }}
-          className="hidden md:block text-[21px] lg:text-[23px] text-white underline underline-offset-2 hover:opacity-60 transition-opacity cursor-pointer"
+          className="hidden md:block text-[16px] lg:text-[21px] text-white underline underline-offset-2 hover:opacity-60 transition-opacity cursor-pointer whitespace-nowrap shrink-0"
         >
           Contact Department
         </a>
