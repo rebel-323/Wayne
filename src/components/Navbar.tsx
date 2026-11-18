@@ -26,7 +26,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSelectNav }) => {
           aria-label="SUMAS — Department of Electrical and Electronic Engineering"
         >
           <img
-            src="/sumas-logo.png"
+            src="/sumas-logo.png?v=2"
             alt="SUMAS — State University of Medical and Applied Sciences"
             className="h-9 sm:h-11 w-auto object-contain block select-none drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)] group-hover:opacity-85 transition-opacity"
           />
