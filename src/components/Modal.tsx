@@ -70,24 +70,24 @@ export const Modal: React.FC<ModalProps> = ({ type, onClose }) => {
       aria-modal="true"
     >
       <div
-        className="relative w-full max-w-2xl bg-[#0d0d0d] border-t sm:border border-white/15 rounded-t-3xl sm:rounded-2xl px-5 pt-3 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:p-8 text-white shadow-2xl max-h-[90dvh] overflow-y-auto overscroll-contain"
+        className="relative w-full max-w-2xl bg-[#0d0d0d] border-t sm:border border-white/15 rounded-t-3xl sm:rounded-2xl px-4 pt-3 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:p-8 text-white shadow-2xl max-h-[88dvh] overflow-y-auto overscroll-contain"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Mobile sheet drag handle */}
-        <div className="w-10 h-1 bg-white/25 rounded-full mx-auto mb-4 sm:hidden" aria-hidden="true" />
-
-        {/* Close button (44x44px minimum touch target) */}
-        <button
-          type="button"
-          onClick={onClose}
-          className="absolute top-3 right-3 sm:top-4 sm:right-4 text-white/70 hover:text-white transition-colors cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full hover:bg-white/10"
-          aria-label="Close modal"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        </button>
+        {/* Mobile sheet drag handle + close row */}
+        <div className="sticky top-0 z-10 -mx-4 px-4 min-h-[44px] sm:min-h-0 mb-2 sm:mb-0 sm:static sm:mx-0 sm:px-0 sm:p-0 bg-[#0d0d0d]/95 backdrop-blur-sm sm:bg-transparent flex items-center justify-center sm:block">
+          <div className="w-10 h-1 bg-white/25 rounded-full sm:hidden" aria-hidden="true" />
+          <button
+            type="button"
+            onClick={onClose}
+            className="absolute right-2 top-1/2 -translate-y-1/2 sm:translate-y-0 sm:top-4 sm:right-4 text-white/75 hover:text-white transition-colors cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full hover:bg-white/10"
+            aria-label="Close modal"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
 
         {/* 1. DEPARTMENT OVERVIEW */}
         {type === 'department' && (

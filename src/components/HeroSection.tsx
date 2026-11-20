@@ -19,7 +19,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   );
 
   useEffect(() => {
-    // Action pills appear 400ms after page load, independent of typewriter animation
     const timer = setTimeout(() => {
       setPillsVisible(true);
     }, 400);
@@ -69,46 +68,40 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   };
 
   return (
-    <section className="min-h-[100dvh] w-full flex flex-col justify-end pt-24 pb-[max(2rem,env(safe-area-inset-bottom))] sm:pb-12 md:justify-center md:pt-24 md:pb-10 px-4 sm:px-8 md:px-10 relative z-[1]">
-      <div className="max-w-2xl w-full relative z-10">
-        {/* 1. Blurred intro label */}
-        <div
-          className="pointer-events-none select-none mb-3 sm:mb-6 text-white"
-          style={{
-            fontSize: 'clamp(16px, 4.2vw, 26px)',
-            lineHeight: 1.3,
-            fontWeight: 400,
-            color: '#fff',
-            filter: 'blur(4px)',
-          }}
-        >
-          SUMAS Faculty of Engineering &amp; Technology,
-          <br />
-          Department of Electrical &amp; Electronic Engineering
+    <section className="min-h-[100dvh] w-full flex flex-col justify-between md:justify-center max-md:landscape:justify-center pt-[68px] sm:pt-24 pb-[max(1rem,env(safe-area-inset-bottom))] md:pt-24 md:pb-10 px-4 sm:px-8 md:px-10 relative z-[1]">
+      {/* Desktop: single left-aligned stack | Mobile Portrait: top intro/typewriter + unobstructed center character + bottom action pills */}
+      <div className="max-w-2xl w-full relative z-10 flex-1 flex flex-col justify-between max-md:landscape:justify-center md:contents">
+        {/* Top Text Block (Mobile: top below navbar | Desktop: upper part of centered left column) */}
+        <div className="max-w-2xl w-full md:mb-6">
+          {/* 1. Blurred intro label */}
+          <div
+            className="pointer-events-none select-none mb-1.5 sm:mb-4 text-white text-[12px] sm:text-[20px] md:text-[24px] leading-[1.28] font-normal blur-[2px] sm:blur-[4px]"
+          >
+            SUMAS Faculty of Engineering &amp; Technology,
+            <br />
+            Department of Electrical &amp; Electronic Engineering
+          </div>
+
+          {/* 2. Typewriter text */}
+          <p
+            className="text-white md:mb-0 text-[14px] sm:text-[20px] md:text-[24px] leading-[1.35] font-normal min-h-[42px] sm:min-h-[54px]"
+          >
+            {displayed}
+            {!done && (
+              <span
+                className="inline-block w-[2px] h-[1.1em] bg-white align-middle ml-[2px] animate-blink"
+                aria-hidden="true"
+              />
+            )}
+          </p>
         </div>
 
-        {/* 2. Typewriter text */}
-        <p
-          className="text-white mb-5 sm:mb-6"
-          style={{
-            fontSize: 'clamp(16px, 4vw, 24px)',
-            lineHeight: 1.4,
-            fontWeight: 400,
-            minHeight: '72px',
-          }}
-        >
-          {displayed}
-          {!done && (
-            <span
-              className="inline-block w-[2px] h-[1.1em] bg-white align-middle ml-[2px] animate-blink"
-              aria-hidden="true"
-            />
-          )}
-        </p>
+        {/* Mobile Center Spacer: leaves the middle of the screen completely open for the centered 2D moving object */}
+        <div className="flex-1 min-h-[190px] max-md:landscape:hidden md:hidden pointer-events-none" aria-hidden="true" />
 
-        {/* 3. Action pill buttons — mobile-friendly 40px+ touch targets with clean wrap */}
+        {/* 3. Bottom Action Pills Block */}
         <div
-          className="flex flex-wrap gap-2 items-center"
+          className="max-w-2xl w-full flex flex-wrap gap-1.5 sm:gap-2 items-center"
           style={{
             transition: 'opacity 0.4s ease, transform 0.4s ease',
             opacity: pillsVisible ? 1 : 0,
@@ -118,7 +111,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <button
             type="button"
             onClick={() => onActionClick('department')}
-            className="inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[13.5px] sm:text-[15px] min-h-[40px] px-4 sm:px-5 py-2 whitespace-nowrap hover:bg-black hover:text-white active:scale-[0.98] transition-all duration-200 cursor-pointer"
+            className="inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[12.5px] sm:text-[15px] min-h-[36px] sm:min-h-[40px] px-3.5 sm:px-5 py-1.5 sm:py-2 whitespace-nowrap hover:bg-black hover:text-white active:scale-[0.98] transition-all duration-200 cursor-pointer"
           >
             Department Overview
           </button>
@@ -126,7 +119,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <button
             type="button"
             onClick={() => onActionClick('curriculum')}
-            className="inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[13.5px] sm:text-[15px] min-h-[40px] px-4 sm:px-5 py-2 whitespace-nowrap hover:bg-black hover:text-white active:scale-[0.98] transition-all duration-200 cursor-pointer"
+            className="inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[12.5px] sm:text-[15px] min-h-[36px] sm:min-h-[40px] px-3.5 sm:px-5 py-1.5 sm:py-2 whitespace-nowrap hover:bg-black hover:text-white active:scale-[0.98] transition-all duration-200 cursor-pointer"
           >
             5-Year Study Path
           </button>
@@ -134,7 +127,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <button
             type="button"
             onClick={() => onActionClick('skills')}
-            className="inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[13.5px] sm:text-[15px] min-h-[40px] px-4 sm:px-5 py-2 whitespace-nowrap hover:bg-black hover:text-white active:scale-[0.98] transition-all duration-200 cursor-pointer"
+            className="inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[12.5px] sm:text-[15px] min-h-[36px] sm:min-h-[40px] px-3.5 sm:px-5 py-1.5 sm:py-2 whitespace-nowrap hover:bg-black hover:text-white active:scale-[0.98] transition-all duration-200 cursor-pointer"
           >
             Required Skills
           </button>
@@ -142,7 +135,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <button
             type="button"
             onClick={() => onActionClick('labs')}
-            className="inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[13.5px] sm:text-[15px] min-h-[40px] px-4 sm:px-5 py-2 whitespace-nowrap hover:bg-black hover:text-white active:scale-[0.98] transition-all duration-200 cursor-pointer"
+            className="inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[12.5px] sm:text-[15px] min-h-[36px] sm:min-h-[40px] px-3.5 sm:px-5 py-1.5 sm:py-2 whitespace-nowrap hover:bg-black hover:text-white active:scale-[0.98] transition-all duration-200 cursor-pointer"
           >
             Laboratories &amp; Workshops
           </button>
@@ -151,7 +144,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <button
             type="button"
             onClick={(e) => copyToClipboard('michelleburston19@gmail.com', 'email', e)}
-            className="inline-flex items-center justify-center text-white bg-black/35 md:bg-transparent backdrop-blur-xs border border-white rounded-full text-[13px] sm:text-[15px] min-h-[40px] max-w-full px-4 sm:px-5 py-2 gap-2 hover:bg-white hover:text-black active:scale-[0.98] transition-all duration-200 cursor-pointer group"
+            className="inline-flex items-center justify-center text-white bg-black/45 md:bg-transparent backdrop-blur-xs border border-white rounded-full text-[12px] sm:text-[15px] min-h-[36px] sm:min-h-[40px] max-w-full px-3.5 sm:px-5 py-1.5 sm:py-2 gap-2 hover:bg-white hover:text-black active:scale-[0.98] transition-all duration-200 cursor-pointer group"
             title="Click to copy email address"
           >
             <span className="truncate">
@@ -199,7 +192,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 copyToClipboard('+234-9073588658', 'phone', e);
               }
             }}
-            className="inline-flex items-center justify-center text-white bg-black/35 md:bg-transparent backdrop-blur-xs border border-white/85 rounded-full text-[13px] sm:text-[15px] min-h-[40px] max-w-full px-4 sm:px-5 py-2 whitespace-nowrap gap-2 hover:bg-white hover:text-black active:scale-[0.98] transition-all duration-200 cursor-pointer group font-mono"
+            className="inline-flex items-center justify-center text-white bg-black/45 md:bg-transparent backdrop-blur-xs border border-white/85 rounded-full text-[12px] sm:text-[15px] min-h-[36px] sm:min-h-[40px] max-w-full px-3.5 sm:px-5 py-1.5 sm:py-2 whitespace-nowrap gap-2 hover:bg-white hover:text-black active:scale-[0.98] transition-all duration-200 cursor-pointer group font-mono"
             title="Tap to call or copy phone number"
           >
             <span>Tel: +234-9073588658</span>
