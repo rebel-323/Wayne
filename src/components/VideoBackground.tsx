@@ -31,8 +31,6 @@ export const VideoBackground: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const video = videoRef.current;
-
     const handlePointerMove = (clientX: number) => {
       const vid = videoRef.current;
       if (!vid || !vid.duration || isNaN(vid.duration)) return;
@@ -94,25 +92,23 @@ export const VideoBackground: React.FC = () => {
   }, []);
 
   return (
-    <video
-      ref={videoRef}
-      src={VIDEO_SRC}
-      muted
-      playsInline
-      preload="auto"
-      onSeeked={handleSeeked}
-      onLoadedMetadata={handleLoadedMetadata}
-      style={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: 0,
-        width: '100vw',
-        height: '100vh',
-        objectFit: 'cover',
-        objectPosition: '70% center',
-        pointerEvents: 'none',
-      }}
-      aria-hidden="true"
-    />
+    <>
+      <video
+        ref={videoRef}
+        src={VIDEO_SRC}
+        muted
+        playsInline
+        preload="auto"
+        onSeeked={handleSeeked}
+        onLoadedMetadata={handleLoadedMetadata}
+        className="fixed inset-0 z-0 w-full h-full object-cover object-[62%_center] md:object-[70%_center] pointer-events-none"
+        aria-hidden="true"
+      />
+      {/* Responsive contrast scrim ensuring legible foreground text on mobile & desktop */}
+      <div
+        className="fixed inset-0 z-0 pointer-events-none bg-gradient-to-t from-black/80 via-black/30 to-black/50 md:from-black/45 md:via-black/10 md:to-black/30"
+        aria-hidden="true"
+      />
+    </>
   );
 };

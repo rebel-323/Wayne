@@ -68,7 +68,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen w-full bg-black text-white select-none overflow-hidden">
+    <div className="relative min-h-[100dvh] w-full bg-black text-white select-none overflow-x-hidden">
       {/* Background Video (mouse-scrub controlled) */}
       <VideoBackground />
 

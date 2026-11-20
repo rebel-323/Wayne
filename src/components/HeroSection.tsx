@@ -69,13 +69,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   };
 
   return (
-    <section className="h-screen w-full flex flex-col justify-end pb-12 md:justify-center md:pb-0 px-5 sm:px-8 md:px-10 overflow-hidden relative z-[1]">
-      <div className="max-w-2xl relative z-10">
+    <section className="min-h-[100dvh] w-full flex flex-col justify-end pt-24 pb-[max(2rem,env(safe-area-inset-bottom))] sm:pb-12 md:justify-center md:pt-24 md:pb-10 px-4 sm:px-8 md:px-10 relative z-[1]">
+      <div className="max-w-2xl w-full relative z-10">
         {/* 1. Blurred intro label */}
         <div
-          className="pointer-events-none select-none mb-4 sm:mb-6 text-white"
+          className="pointer-events-none select-none mb-3 sm:mb-6 text-white"
           style={{
-            fontSize: 'clamp(18px, 4vw, 26px)',
+            fontSize: 'clamp(16px, 4.2vw, 26px)',
             lineHeight: 1.3,
             fontWeight: 400,
             color: '#fff',
@@ -91,10 +91,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <p
           className="text-white mb-5 sm:mb-6"
           style={{
-            fontSize: 'clamp(17px, 3.8vw, 24px)',
-            lineHeight: 1.35,
+            fontSize: 'clamp(16px, 4vw, 24px)',
+            lineHeight: 1.4,
             fontWeight: 400,
-            minHeight: '54px',
+            minHeight: '72px',
           }}
         >
           {displayed}
@@ -106,20 +106,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           )}
         </p>
 
-        {/* 3. Action pill buttons */}
+        {/* 3. Action pill buttons — mobile-friendly 40px+ touch targets with clean wrap */}
         <div
-          className="flex flex-wrap gap-y-1 items-center"
+          className="flex flex-wrap gap-2 items-center"
           style={{
             transition: 'opacity 0.4s ease, transform 0.4s ease',
             opacity: pillsVisible ? 1 : 0,
             transform: pillsVisible ? 'translateY(0)' : 'translateY(8px)',
           }}
         >
-          {/* Action pills for Department Details */}
           <button
             type="button"
             onClick={() => onActionClick('department')}
-            className="inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] whitespace-nowrap hover:bg-black hover:text-white transition-colors duration-200 cursor-pointer"
+            className="inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[13.5px] sm:text-[15px] min-h-[40px] px-4 sm:px-5 py-2 whitespace-nowrap hover:bg-black hover:text-white active:scale-[0.98] transition-all duration-200 cursor-pointer"
           >
             Department Overview
           </button>
@@ -127,7 +126,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <button
             type="button"
             onClick={() => onActionClick('curriculum')}
-            className="inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] whitespace-nowrap hover:bg-black hover:text-white transition-colors duration-200 cursor-pointer"
+            className="inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[13.5px] sm:text-[15px] min-h-[40px] px-4 sm:px-5 py-2 whitespace-nowrap hover:bg-black hover:text-white active:scale-[0.98] transition-all duration-200 cursor-pointer"
           >
             5-Year Study Path
           </button>
@@ -135,7 +134,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <button
             type="button"
             onClick={() => onActionClick('skills')}
-            className="inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] whitespace-nowrap hover:bg-black hover:text-white transition-colors duration-200 cursor-pointer"
+            className="inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[13.5px] sm:text-[15px] min-h-[40px] px-4 sm:px-5 py-2 whitespace-nowrap hover:bg-black hover:text-white active:scale-[0.98] transition-all duration-200 cursor-pointer"
           >
             Required Skills
           </button>
@@ -143,7 +142,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <button
             type="button"
             onClick={() => onActionClick('labs')}
-            className="inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] whitespace-nowrap hover:bg-black hover:text-white transition-colors duration-200 cursor-pointer"
+            className="inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[13.5px] sm:text-[15px] min-h-[40px] px-4 sm:px-5 py-2 whitespace-nowrap hover:bg-black hover:text-white active:scale-[0.98] transition-all duration-200 cursor-pointer"
           >
             Laboratories &amp; Workshops
           </button>
@@ -152,10 +151,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <button
             type="button"
             onClick={(e) => copyToClipboard('michelleburston19@gmail.com', 'email', e)}
-            className="inline-flex items-center justify-center text-white bg-transparent border border-white rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] whitespace-nowrap gap-2 hover:bg-white hover:text-black transition-colors duration-200 cursor-pointer group"
+            className="inline-flex items-center justify-center text-white bg-black/35 md:bg-transparent backdrop-blur-xs border border-white rounded-full text-[13px] sm:text-[15px] min-h-[40px] max-w-full px-4 sm:px-5 py-2 gap-2 hover:bg-white hover:text-black active:scale-[0.98] transition-all duration-200 cursor-pointer group"
             title="Click to copy email address"
           >
-            <span>
+            <span className="truncate">
               Mail: <span className="underline underline-offset-1">michelleburston19@gmail.com</span>
             </span>
             {copiedEmail ? (
@@ -192,17 +191,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             )}
           </button>
 
-          {/* Outline pill button: Direct Call / Copy Phone */}
+          {/* Outline pill button: Direct Call on mobile / Copy Phone on desktop */}
           <a
             href="tel:+2349073588658"
             onClick={(e) => {
               if (window.innerWidth >= 768) {
-                // On desktop, copy instead of dial
                 copyToClipboard('+234-9073588658', 'phone', e);
               }
             }}
-            className="inline-flex items-center justify-center text-white bg-transparent border border-white/80 rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] whitespace-nowrap gap-2 hover:bg-white hover:text-black transition-colors duration-200 cursor-pointer group font-mono"
-            title="Click to call or copy phone number"
+            className="inline-flex items-center justify-center text-white bg-black/35 md:bg-transparent backdrop-blur-xs border border-white/85 rounded-full text-[13px] sm:text-[15px] min-h-[40px] max-w-full px-4 sm:px-5 py-2 whitespace-nowrap gap-2 hover:bg-white hover:text-black active:scale-[0.98] transition-all duration-200 cursor-pointer group font-mono"
+            title="Tap to call or copy phone number"
           >
             <span>Tel: +234-9073588658</span>
             {copiedPhone ? (
