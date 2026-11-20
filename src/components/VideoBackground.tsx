@@ -120,37 +120,21 @@ export const VideoBackground: React.FC = () => {
 
   return (
     <>
-      {/* Seamless studio radial backdrop matching the video aura on mobile portrait */}
-      <div
-        className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,#06278a_0%,#020e38_45%,#000000_85%)] max-md:landscape:bg-black md:bg-black"
+      <video
+        ref={videoRef}
+        src={`${VIDEO_SRC}#t=0.01`}
+        muted
+        playsInline
+        preload="auto"
+        onSeeked={handleSeeked}
+        onLoadedMetadata={handleLoadedMetadata}
+        className="fixed inset-0 w-full h-full object-cover object-center max-md:landscape:object-[70%_center] md:object-[70%_center] z-0 pointer-events-none"
         aria-hidden="true"
       />
 
-      {/* Centered mobile stage: keeps the 2D moving character dead-center (50%, 50%) on portrait phones */}
+      {/* Subtle top & bottom gradient scrims so text blends seamlessly over the full-height video */}
       <div
-        className="fixed inset-0 z-0 pointer-events-none flex items-center justify-center md:block max-md:landscape:block"
-        aria-hidden="true"
-      >
-        <div
-          className="relative w-full h-[48dvh] min-h-[280px] max-h-[460px] overflow-hidden [mask-image:radial-gradient(ellipse_90%_88%_at_50%_50%,black_55%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_90%_88%_at_50%_50%,black_55%,transparent_100%)] max-md:landscape:h-full max-md:landscape:min-h-0 max-md:landscape:max-h-none max-md:landscape:[mask-image:none] max-md:landscape:[-webkit-mask-image:none] md:w-full md:h-full md:min-h-0 md:max-h-none md:[mask-image:none] md:[-webkit-mask-image:none]"
-        >
-          <video
-            ref={videoRef}
-            src={`${VIDEO_SRC}#t=0.01`}
-            muted
-            playsInline
-            preload="auto"
-            onSeeked={handleSeeked}
-            onLoadedMetadata={handleLoadedMetadata}
-            className="w-full h-full object-cover object-center max-md:landscape:object-[70%_center] md:object-[70%_center] pointer-events-none"
-            aria-hidden="true"
-          />
-        </div>
-      </div>
-
-      {/* Subtle top & bottom gradient scrims for crisp text legibility without obscuring the center character */}
-      <div
-        className="fixed inset-0 z-0 pointer-events-none bg-[linear-gradient(to_bottom,rgba(0,0,0,0.55)_0%,transparent_24%,transparent_66%,rgba(0,0,0,0.78)_100%)] max-md:landscape:bg-gradient-to-r max-md:landscape:from-black/70 max-md:landscape:via-black/20 max-md:landscape:to-transparent md:bg-gradient-to-t md:from-black/45 md:via-transparent md:to-black/25"
+        className="fixed inset-0 z-0 pointer-events-none bg-[linear-gradient(to_bottom,rgba(0,0,0,0.48)_0%,transparent_28%,transparent_66%,rgba(0,0,0,0.68)_100%)] max-md:landscape:bg-gradient-to-r max-md:landscape:from-black/65 max-md:landscape:via-black/20 max-md:landscape:to-transparent md:bg-gradient-to-t md:from-black/45 md:via-transparent md:to-black/25"
         aria-hidden="true"
       />
     </>
